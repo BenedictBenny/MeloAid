@@ -1,6 +1,9 @@
 import axios from "axios";
+import Generate from "../components/generate/Generate";
+import "./Upload.css";
 
 import React, { Component } from "react";
+import FeedbackPage from "./Feedback";
 
 class Ap extends Component {
   state = {
@@ -56,7 +59,7 @@ class Ap extends Component {
       return (
         <div>
           <br />
-          <h4>Choose before Pressing the Upload button</h4>
+          <h4>After Uploading Click below </h4>
         </div>
       );
     }
@@ -69,9 +72,14 @@ class Ap extends Component {
 
         <div>
           <input type="file" onChange={this.onFileChange} />
-          <button onClick={this.onFileUpload}>Upload!</button>
+          <button className="btn" onClick={this.onFileUpload}>
+            Upload!
+          </button>
         </div>
         {this.fileData()}
+        <div>
+          <Generate></Generate>
+        </div>
       </div>
     );
   }

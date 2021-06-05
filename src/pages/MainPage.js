@@ -5,7 +5,7 @@ const DUMMY_DATA = [
     id: "m1",
 
     image:
-      "https://lh3.googleusercontent.com/l9goVmKcFTUdL051rLcKLi447FEquUiN78hCohNIJevhov6iAXct3SwDSlssDYvdqaqZ=s151",
+      "https://lh3.googleusercontent.com/sWTD5ADtX5jD9M9YOBClu2dcOK7dUJAsiqzQnhMybyYcX2cPFO4sPmxNbBP50kOr-GKz=s85",
   },
 ];
 

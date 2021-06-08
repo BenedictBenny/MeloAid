@@ -6,11 +6,16 @@ import React, { Component } from "react";
 import FeedbackPage from "./Feedback";
 
 class Ap extends Component {
-  state = {
-    // Initially, no file is selected
-    selectedFile: null,
-  };
-
+  constructor(props) {
+    super(props);
+    this.state = {
+      // Initially, no file is selected
+      selectedFile: null,
+      didUploadFile : false,
+      songScale: null,
+    };
+  }
+  
   // On file select (from the pop up)
   onFileChange = (event) => {
     // Update the state
@@ -30,11 +35,28 @@ class Ap extends Component {
     );
 
     // Details of the uploaded file
-    console.log(this.state.selectedFile);
+    //console.log(this.state.selectedFile);
 
     // Request made to the backend api
     // Send formData object
-    axios.post("api/uploadfile", formData);
+    var self = this;
+    axios.post("https://api.meloaid.com/upload", formData)
+    .then(function (response) {
+      self.setState({
+        songScale : response.data.key,
+        didUploadFile:true
+      })
+    }).catch(err => {
+      if (err.response) {
+        alert('We seem to be experiencing a problem, please retry later');
+        // client received an error response (5xx, 4xx)
+      } else if (err.request) {
+        alert('Unable to communicate with server, please try later');
+      } else {
+        console.log(err);
+        // alert('Unexpected error encountered, sorry for inconvience');
+      }
+  })
   };
 
   // File content to be displayed after
@@ -49,18 +71,12 @@ class Ap extends Component {
 
           <p>File Type: {this.state.selectedFile.type}</p>
 
-          <p>
-            Last Modified:{" "}
-            {this.state.selectedFile.lastModifiedDate.toDateString()}
-          </p>
+          {this.state.songScale && <h3>Scale of uploaded File {this.state.songScale} </h3>}
+
         </div>
       );
     } else {
-      return (
-        <div>
-          <br />
-          <h4>After Uploading Click below </h4>
-        </div>
+      return (null
       );
     }
   };
@@ -69,7 +85,6 @@ class Ap extends Component {
     return (
       <div>
         <h1>Upload here</h1>
-
         <div>
           <input type="file" onChange={this.onFileChange} />
           <button className="btn" onClick={this.onFileUpload}>
@@ -78,7 +93,7 @@ class Ap extends Component {
         </div>
         {this.fileData()}
         <div>
-          <Generate></Generate>
+          {this.state.didUploadFile && <Generate> </Generate>}
         </div>
       </div>
     );

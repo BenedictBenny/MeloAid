@@ -25,5 +25,6 @@ function Generate(props) {
       {modalIsOpen && <Backdrop onCancel={closeModalHandler} />}
     </div>
   );
+
 }
 export default Generate;

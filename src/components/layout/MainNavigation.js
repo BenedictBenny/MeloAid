@@ -4,7 +4,7 @@ import classes from "./MainNavigation.module.css";
 function MainNavigation() {
   return (
     <header className={classes.header}>
-      <div className={classes.logo}>Melo-Aid</div>
+      <div className={classes.logo}>M E L O A I D</div>
       <nav>
         <ul>
           <li>

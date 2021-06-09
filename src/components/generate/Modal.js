@@ -8,6 +8,7 @@ function Modal(props) {
 
       <div>
         <Card>
+          <h3>1st Generated Melody :</h3>
           <audio controls>
             <source
               src={`https://api.meloaid.com/songs/${songs[0]}`}
@@ -18,6 +19,7 @@ function Modal(props) {
       </div>
       <div>
         <Card>
+          <h3>2nd Generated Melody :</h3>
           <audio controls>
             <source
               src={`https://api.meloaid.com/songs/${songs[1]}`}
@@ -26,16 +28,18 @@ function Modal(props) {
           </audio>
         </Card>
       </div>
-      <Card>
-        <div>
+      <div>
+        <Card>
+          <h3>3rd Generated Melody :</h3>
+
           <audio controls>
             <source
               src={`https://api.meloaid.com/songs/${songs[2]}`}
               type="audio/mpeg"
             ></source>
           </audio>
-        </div>
-      </Card>
+        </Card>
+      </div>
     </div>
   );
 }

@@ -4,7 +4,7 @@ import "./Upload.css";
 import React, { Component } from "react";
 import { loadProgressBar } from "x-axios-progress-bar";
 import "x-axios-progress-bar/dist/nprogress.css";
-
+import Card from "../components/ui/Card";
 
 // Initialize player and register event handler
 
@@ -71,13 +71,18 @@ class Ap extends Component {
       return (
         <div>
           <h2>File Details:</h2>
+          <Card>
+            <p>File Name: {this.state.selectedFile.name}</p>
 
-          <p>File Name: {this.state.selectedFile.name}</p>
-
-          <p>File Type: {this.state.selectedFile.type}</p>
-
+            <p>File Type: {this.state.selectedFile.type}</p>
+          </Card>
           {this.state.songScale && (
-            <h3>Scale of uploaded File {this.state.songScale} </h3>
+            <div>
+              <h3>Scale of uploaded File :</h3>
+              <Card>
+                <h4>{this.state.songScale} </h4>
+              </Card>
+            </div>
           )}
         </div>
       );
@@ -92,7 +97,11 @@ class Ap extends Component {
         {loadProgressBar()}
         <h1>Upload here</h1>
         <div>
-          <input type="file" onChange={this.onFileChange} />
+          <input
+            type="file"
+            class="custom-file-input"
+            onChange={this.onFileChange}
+          />
           <button className="btn" onClick={this.onFileUpload}>
             Upload!
           </button>

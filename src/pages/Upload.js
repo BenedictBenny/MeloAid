@@ -1,9 +1,12 @@
 import axios from "axios";
 import Generate from "../components/generate/Generate";
 import "./Upload.css";
-
 import React, { Component } from "react";
+import { loadProgressBar } from 'x-axios-progress-bar';
+import 'x-axios-progress-bar/dist/nprogress.css';
 import FeedbackPage from "./Feedback";
+
+// Initialize player and register event handler
 
 class Ap extends Component {
   constructor(props) {
@@ -11,11 +14,11 @@ class Ap extends Component {
     this.state = {
       // Initially, no file is selected
       selectedFile: null,
-      didUploadFile : false,
+      didUploadFile: false,
       songScale: null,
     };
   }
-  
+
   // On file select (from the pop up)
   onFileChange = (event) => {
     // Update the state
@@ -41,24 +44,25 @@ class Ap extends Component {
     // Send formData object
     var self = this;
     axios.post("https://api.meloaid.com/upload", formData)
-    .then(function (response) {
-      self.setState({
-        songScale : response.data.key,
-        didUploadFile:true
-      })
-    }).catch(err => {
-      if (err.response) {
-        alert('We seem to be experiencing a problem, please retry later');
-        // client received an error response (5xx, 4xx)
-      } else if (err.request) {
-        alert('Unable to communicate with server, please try later');
-      } else {
-        console.log(err);
-        // alert('Unexpected error encountered, sorry for inconvience');
-      }
-  })
+      .then(function (response) {
+        self.setState({
+          songScale: response.data.key,
+          didUploadFile: true
+        })
+      }).catch(err => {
+        if (err.response) {
+          alert('We seem to be experiencing a problem, please retry later');
+          // client received an error response (5xx, 4xx)
+        } else if (err.request) {
+          alert('Unable to communicate with server, please try later');
+        } else {
+          console.log(err);
+          // alert('Unexpected error encountered, sorry for inconvience');
+        }
+      });
   };
 
+  
   // File content to be displayed after
   // file upload is complete
   fileData = () => {
@@ -84,6 +88,7 @@ class Ap extends Component {
   render() {
     return (
       <div>
+        {loadProgressBar()}
         <h1>Upload here</h1>
         <div>
           <input type="file" onChange={this.onFileChange} />

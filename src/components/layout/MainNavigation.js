@@ -12,7 +12,7 @@ function MainNavigation() {
           </li>
 
           <li>
-            <Link to="./favourites">Upload</Link>
+            <Link to="./favourites">Generate</Link>
           </li>
           <li>
             <Link to="./new-meetup">Give Feedback</Link>

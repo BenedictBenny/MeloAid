@@ -4,7 +4,7 @@ function Modal(props) {
   const songs = props.songList;
   return (
     <div className="modal">
-      <h2>Checkout the songs you inspired 🎶</h2>
+      <h2>Checkout the melodies you inspired 🎶</h2>
 
       <div>
         <Card>

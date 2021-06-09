@@ -1,5 +1,5 @@
 import Card from "../ui/Card";
-import "./Modal.module.css";
+
 function Modal(props) {
   const songs = props.songList;
   return (
@@ -11,7 +11,7 @@ function Modal(props) {
           <audio controls>
             <source
               src={`https://api.meloaid.com/songs/${songs[0]}`}
-              type="audio/wav"
+              type="audio/mpeg"
             ></source>
           </audio>
         </Card>
@@ -21,7 +21,7 @@ function Modal(props) {
           <audio controls>
             <source
               src={`https://api.meloaid.com/songs/${songs[1]}`}
-              type="audio/wav"
+              type="audio/mpeg"
             ></source>
           </audio>
         </Card>
@@ -31,7 +31,7 @@ function Modal(props) {
           <audio controls>
             <source
               src={`https://api.meloaid.com/songs/${songs[2]}`}
-              type="audio/wav"
+              type="audio/mpeg"
             ></source>
           </audio>
         </div>

@@ -4,7 +4,7 @@ import "./Upload.css";
 import React, { Component } from "react";
 import { loadProgressBar } from "x-axios-progress-bar";
 import "x-axios-progress-bar/dist/nprogress.css";
-import FeedbackPage from "./Feedback";
+
 
 // Initialize player and register event handler
 

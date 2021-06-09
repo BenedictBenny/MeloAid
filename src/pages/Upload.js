@@ -2,8 +2,8 @@ import axios from "axios";
 import Generate from "../components/generate/Generate";
 import "./Upload.css";
 import React, { Component } from "react";
-import { loadProgressBar } from 'x-axios-progress-bar';
-import 'x-axios-progress-bar/dist/nprogress.css';
+import { loadProgressBar } from "x-axios-progress-bar";
+import "x-axios-progress-bar/dist/nprogress.css";
 import FeedbackPage from "./Feedback";
 
 // Initialize player and register event handler
@@ -43,18 +43,20 @@ class Ap extends Component {
     // Request made to the backend api
     // Send formData object
     var self = this;
-    axios.post("https://api.meloaid.com/upload", formData)
+    axios
+      .post("https://api.meloaid.com/upload", formData)
       .then(function (response) {
         self.setState({
           songScale: response.data.key,
-          didUploadFile: true
-        })
-      }).catch(err => {
+          didUploadFile: true,
+        });
+      })
+      .catch((err) => {
         if (err.response) {
-          alert('We seem to be experiencing a problem, please retry later');
+          alert("We seem to be experiencing a problem, please retry later");
           // client received an error response (5xx, 4xx)
         } else if (err.request) {
-          alert('Unable to communicate with server, please try later');
+          alert("Unable to communicate with server, please try later");
         } else {
           console.log(err);
           // alert('Unexpected error encountered, sorry for inconvience');
@@ -62,7 +64,6 @@ class Ap extends Component {
       });
   };
 
-  
   // File content to be displayed after
   // file upload is complete
   fileData = () => {
@@ -75,13 +76,13 @@ class Ap extends Component {
 
           <p>File Type: {this.state.selectedFile.type}</p>
 
-          {this.state.songScale && <h3>Scale of uploaded File {this.state.songScale} </h3>}
-
+          {this.state.songScale && (
+            <h3>Scale of uploaded File {this.state.songScale} </h3>
+          )}
         </div>
       );
     } else {
-      return (null
-      );
+      return null;
     }
   };
 
@@ -97,9 +98,7 @@ class Ap extends Component {
           </button>
         </div>
         {this.fileData()}
-        <div>
-          {this.state.didUploadFile && <Generate> </Generate>}
-        </div>
+        <div>{this.state.didUploadFile && <Generate> </Generate>}</div>
       </div>
     );
   }

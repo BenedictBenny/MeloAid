@@ -9,7 +9,6 @@
   margin: 0 1rem;
 }
 
-
 .btn:hover {
   background-color: #9c1458;
   border-color: #9c1458;
@@ -30,11 +29,10 @@
   background-color: white;
   padding: 1rem;
   text-align: center;
-  width: 80rem;
+  width: 40rem;
   z-index: 10;
   position: fixed;
   top: 20vh;
-  left: 20rem;
 }
 
 .backdrop {
@@ -47,7 +45,7 @@
   left: 0;
 }
 
-audio{
+audio {
   padding-left: 1em;
   padding-right: 1em;
 }

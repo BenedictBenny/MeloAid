@@ -95,10 +95,11 @@ class Ap extends Component {
     return (
       <div>
         {loadProgressBar()}
-        <h1>Upload here</h1>
+        <h1>Upload song here</h1>
         <div>
           <input
             type="file"
+            accept=".mp4,audio/*"
             class="custom-file-input"
             onChange={this.onFileChange}
           />

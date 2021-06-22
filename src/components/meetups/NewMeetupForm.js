@@ -33,7 +33,7 @@ function NewMeetupForm(props) {
         </div>
         <div className={classes.control}>
           <label htmlFor="image">Email</label>
-          <input type="url" required id="image" ref={imageInputRef} />
+          <input type="email" required id="image" ref={imageInputRef} />
         </div>
         <div className={classes.control}>
           <label htmlFor="address">Address</label>

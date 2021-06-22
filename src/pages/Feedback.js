@@ -19,7 +19,7 @@ function FeedbackPage() {
   }
   return (
     <section>
-      <h1>Add New Meetups</h1>
+      <h1>Feedback Form</h1>
       <NewMeetupForm onAddMeetup={addMeetupHandler} />
     </section>
   );
